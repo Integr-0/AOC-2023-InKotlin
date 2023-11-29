@@ -1,15 +1,8 @@
 # AOC-2023-InKotlin
 
-Welcome to the Advent of Code[^aoc] Kotlin project created by [integr-0][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
+Welcome to the Advent of Code[^aoc] Kotlin project created by [Integr-0][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
 
 In this repository, integr-0 is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
-
-If you're stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
-
-- [Kotlin docs][docs]
-- [Kotlin Slack][slack]
-- Template [issue tracker][issues]
-
 
 [^aoc]:
     [Advent of Code][aoc] – An annual event of Christmas-oriented programming challenges started December 2015.
