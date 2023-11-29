@@ -13,10 +13,10 @@ In this repository, Integr is about to provide solutions for the puzzles using [
 └── src
     ├── Day01.kt            An empty implementation for the first AoC day
     ├── Utils.kt            A set of utility methods shared across your days
-    │                       
-    │                       (files needed to be manually created)
-    ├── Day01.txt           An empty file for the Day 01 input data
-    └── Day01_test.txt      An optional Day 01 test input data used for checks
+    └── inputs                     
+        │                       (files needed to be manually created)
+        ├── Day01.txt           An empty file for the Day 01 input data
+        └── Day01_test.txt      An optional Day 01 test input data used for checks
 ````
 [^aoc]:
     [Advent of Code][aoc] – An annual event of Christmas-oriented programming challenges started December 2015.
