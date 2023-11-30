@@ -7,18 +7,10 @@ import utils.*
  * **See Also:** [Template](https://github.com/kotlin-hands-on/advent-of-code-kotlin-template)
  */
 fun main() {
-    val service = MultiThreadingService(2)
+    var v1 = Vec3d(1, 1, 1)
+    var v2 = Vec3d(2, 2, 2)
 
-    service.exec {
-        Thread.sleep(10)
-        println("A")
-    }
+    var v3 = v1 + v2
 
-    service.exec {
-        println("B")
-        Thread.sleep(10000)
-    }
-
-    service.await(10)
-    println("DONE")
+    v3
 }

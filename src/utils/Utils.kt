@@ -63,6 +63,19 @@ fun String.sha384(): String = BigInteger(1, MessageDigest.getInstance("SHA-384")
 fun String.sha512(): String = BigInteger(1, MessageDigest.getInstance("SHA-512").digest(toByteArray())).toString(16)
 
 /**
+ * Converts the given string to the given base
+ * @param base the Number system to use
+ * @return the Converted String
+ */
+fun String.base(base: Int): String = BigInteger(1, toByteArray()).toString(base)
+
+/**
+ * Converts the given Integer to the given base
+ * @param base the Number system to use
+ * @return the Converted Integer
+ */
+fun Int.base(base: Int): Int = toString(base).toInt()
+/**
  * Class for easier **Multithreading**
  * @param threads amount of threads to use for execution
  */
