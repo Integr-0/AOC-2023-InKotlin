@@ -21,6 +21,32 @@ fun readInput(name: String) = Path("src/inputs/$name.txt").readLines()
 fun Any?.println() = println(this)
 
 /**
+ * The cleaner shorthand for printing output.
+ */
+fun Any?.println(str: String) {
+    kotlin.io.println(str.replace("{val}", this.toString(), true))
+}
+
+/**
+ * Hashes the String Multiple times
+ */
+fun String.multiSha256(amount: Int): String {
+    var str = this
+    (1..amount).forEach { str = str.sha256() }
+    return str
+}
+
+/**
+ * Hashes the String Multiple times
+ */
+fun String.multiSha256(amount: Int, appendAfterEach: String): String {
+    var str = this
+    for (i in (1..amount)) { str = str.sha256()+appendAfterEach }
+    return str.removeSuffix(appendAfterEach)
+}
+
+
+/**
  * Hash String into **MD2**
  * @return the Hashed string
  */

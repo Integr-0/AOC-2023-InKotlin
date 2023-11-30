@@ -10,7 +10,11 @@ class Vec3d {
     var y: Double = 0.0
     var z: Double = 0.0
 
-    val ZERO = Vec3d(0, 0, 0)
+    companion object {
+        val ZERO = Vec3d(0, 0, 0)
+        val MAX = Vec3d(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)
+        val MIN = Vec3d(Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE)
+    }
 
     /**
      * A Class to track a Point in **3D** space
@@ -41,14 +45,16 @@ class Vec3d {
     operator fun div(v: Double) = Vec3d(this.x/v, this.y/v, this.z/v)
     operator fun times(v: Double) = Vec3d(this.x*v, this.y*v, this.z*v)
     operator fun rem(v: Double) = Vec3d(this.x%v, this.y%v, this.z%v)
+
     operator fun plus(v: Vec3d) = Vec3d(this.x+v.x, this.y+v.y, this.z+v.z)
     operator fun minus(v: Vec3d) = Vec3d(this.x-v.x, this.y-v.y, this.z-v.z)
     operator fun div(v: Vec3d) = Vec3d(this.x/v.x, this.y/v.y, this.z/v.z)
     operator fun times(v: Vec3d) = Vec3d(this.x*v.x, this.y*v.y, this.z*v.z)
     operator fun rem(v: Vec3d) = Vec3d(this.x%v.x, this.y%v.y, this.z%v.z)
 
-    override fun toString(): String = "$x, $y, $z"
-
     fun getMagnitude(): Double = sqrt(x*x + y*y + z*z)
     fun normalize(): Vec3d = this / getMagnitude()
+
+    override fun toString(): String = "$x, $y, $z"
+
 }
