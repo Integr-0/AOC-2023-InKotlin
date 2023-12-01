@@ -37,7 +37,7 @@ fun solvePart2(lines: List<String>) {
         val last = l.findLastAnyOf(numbers)
 
         total += (numFromString(first!!.second)+numFromString(last!!.second)).toInt()
-    } //54208
+    }
 
     total.println("Part 2 Total: {val}")
 }
