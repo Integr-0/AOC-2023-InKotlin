@@ -9,50 +9,53 @@ import utils.*
 fun main() {
     val lines = readInput("Day01")
 
-    solvePart1(lines)
-    solvePart2(lines)
+    Day01().solvePart1(lines)
+    Day01().solvePart2(lines)
 }
 
-fun solvePart1(lines: List<String>) {
-    var total = 0;
+class Day01 {
+    fun solvePart1(lines: List<String>) {
+        var total = 0
 
-    for (l in lines) {
-        val numbers = l.filter { it.isDigit() }
+        for (l in lines) {
+            val numbers = l.filter { it.isDigit() }
 
-        val first = numbers[0]
-        val last = numbers[numbers.length-1]
+            val first = numbers[0]
+            val last = numbers[numbers.length-1]
 
-        total += (first.toString()+last.toString()).toInt()
+            total += (first.toString()+last.toString()).toInt()
+        }
+
+        total.println("Part 1 Total: {val}")
     }
 
-    total.println("Part 1 Total: {val}")
-}
+    fun solvePart2(lines: List<String>) {
+        var total = 0
+        val numbers = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9")
 
-fun solvePart2(lines: List<String>) {
-    var total = 0;
-    val numbers = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        for (l in lines) {
+            val first = l.findAnyOf(numbers)
+            val last = l.findLastAnyOf(numbers)
 
-    for (l in lines) {
-        val first = l.findAnyOf(numbers)
-        val last = l.findLastAnyOf(numbers)
+            total += (numFromString(first!!.second)+numFromString(last!!.second)).toInt()
+        }
 
-        total += (numFromString(first!!.second)+numFromString(last!!.second)).toInt()
+        total.println("Part 2 Total: {val}")
     }
 
-    total.println("Part 2 Total: {val}")
-}
-
-fun numFromString(str: String): String {
-    return when (str) {
-        "one" -> "1"
-        "two" -> "2"
-        "three" -> "3"
-        "four" -> "4"
-        "five" -> "5"
-        "six" -> "6"
-        "seven" -> "7"
-        "eight" -> "8"
-        "nine" -> "9"
-        else -> str
+    fun numFromString(str: String): String {
+        return when (str) {
+            "one" -> "1"
+            "two" -> "2"
+            "three" -> "3"
+            "four" -> "4"
+            "five" -> "5"
+            "six" -> "6"
+            "seven" -> "7"
+            "eight" -> "8"
+            "nine" -> "9"
+            else -> str
+        }
     }
 }
+
