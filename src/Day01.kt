@@ -8,13 +8,14 @@ import utils.*
  */
 fun main() {
     val lines = readInput("Day01")
+    val day01 = Day01(lines)
 
-    Day01().solvePart1(lines)
-    Day01().solvePart2(lines)
+    day01.solvePart1()
+    day01.solvePart2()
 }
 
-class Day01 {
-    fun solvePart1(lines: List<String>) {
+class Day01(private val lines: List<String>) {
+    fun solvePart1() {
         var total = 0
 
         for (l in lines) {
@@ -29,7 +30,7 @@ class Day01 {
         total.println("Part 1 Total: {val}")
     }
 
-    fun solvePart2(lines: List<String>) {
+    fun solvePart2() {
         var total = 0
         val numbers = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9")
 
@@ -43,7 +44,7 @@ class Day01 {
         total.println("Part 2 Total: {val}")
     }
 
-    fun numFromString(str: String): String {
+    private fun numFromString(str: String): String {
         return when (str) {
             "one" -> "1"
             "two" -> "2"

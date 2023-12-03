@@ -10,12 +10,13 @@ import java.lang.NullPointerException
  */
 fun main() {
     val lines = readInput("Day02")
+    val day02 = Day02(lines)
 
-    Day02().solvePart1(lines)
-    Day02().solvePart2(lines)
+    day02.solvePart1()
+    day02.solvePart2()
 }
-class Day02 {
-    fun solvePart1(lines: List<String>) {
+class Day02(private val lines: List<String>) {
+    fun solvePart1() {
         val startingRedCubes = 12
         val startingGreenCubes = 13
         val startingBlueCubes = 14
@@ -58,7 +59,7 @@ class Day02 {
         finalNum.println("Part 1 Total: {val}")
     }
 
-    fun solvePart2(lines: List<String>) {
+    fun solvePart2() {
         var finalNum = 0
 
         for (l in lines) {
@@ -96,7 +97,7 @@ class Day02 {
         finalNum.println("Part 2 Total: {val}")
     }
 
-    fun getHands(line: String): List<List<Cube>> {
+    private fun getHands(line: String): List<List<Cube>> {
         val newLine = line.substringAfter(": ")
         val hands = newLine.split("; ")
         val finalHands: MutableList<List<Cube>> = mutableListOf()
@@ -107,7 +108,7 @@ class Day02 {
         return finalHands
     }
 
-    fun handToCubes(hand: String): List<Cube> {
+    private fun handToCubes(hand: String): List<Cube> {
         val cubeStrings = hand.split(", ")
         val cubes: MutableList<Cube> = mutableListOf()
 
@@ -119,7 +120,7 @@ class Day02 {
         return cubes
     }
 
-    fun colorToColor(string: String): Color {
+    private fun colorToColor(string: String): Color {
         return when (string) {
             "red" -> Color.RED
             "green" -> Color.GREEN

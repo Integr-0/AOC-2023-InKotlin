@@ -1,6 +1,5 @@
 import utils.println
 import utils.readInput
-import java.lang.NullPointerException
 
 /**
  * # Day 03
@@ -10,20 +9,21 @@ import java.lang.NullPointerException
  */
 fun main() {
     val lines = readInput("Day03")
+    val day03 = Day03(lines)
 
-    Day03().solvePart1(lines)
-    Day03().solvePart2(lines)
+    day03.solvePart1()
+    day03.solvePart2()
 }
 
-class Day03 {
-    fun solvePart1(lines: List<String>) {
+class Day03(private val lines: List<String>) {
+    fun solvePart1() {
         var sum = 0
         for (l in (0..<lines.count())) {
-            var line = lines[l]
+            val line = lines[l]
             for (i in (0..<line.count())) {
-                var c = line[i]
+                val c = line[i]
                 if (c.isSymbol()) {
-                    checkAdjacent(i, l, lines).forEach {
+                    checkAdjacent(i, l).forEach {
                         sum += it
                     }
                 }
@@ -32,17 +32,17 @@ class Day03 {
         sum.println("Part 1 Total: {val}")
     }
 
-    fun solvePart2(lines: List<String>) {
+    fun solvePart2() {
         var sum = 0
         for (l in (0..<lines.count())) {
-            var line = lines[l]
+            val line = lines[l]
             for (i in (0..<line.count())) {
-                var c = line[i]
+                val c = line[i]
                 if (c.isGear()) {
-                    var nums = checkAdjacent(i, l, lines)
-                    if (nums.count() >= 2) {
+                    val numbers = checkAdjacent(i, l)
+                    if (numbers.count() >= 2) {
                         var finalRatio = 1;
-                        nums.forEach { finalRatio *= it }
+                        numbers.forEach { finalRatio *= it }
                         sum += finalRatio
                     }
                 }
@@ -51,73 +51,73 @@ class Day03 {
         sum.println("Part 2 Total: {val}")
     }
 
-    fun Char.isSymbol(): Boolean {
+    private fun Char.isSymbol(): Boolean {
         return !this.isDigit() && this != '.'
     }
 
-    fun Char.isGear(): Boolean {
+    private fun Char.isGear(): Boolean {
         return this == '*'
     }
 
-    fun charFromXY(x: Int, y: Int, lines: List<String>): Char {
+    private fun charFromXY(x: Int, y: Int): Char {
         return lines[y][x]
     }
 
-    fun checkAdjacent(x: Int, y: Int, lines: List<String>): List<Int> {
-        var returnObj: MutableList<Int> = mutableListOf()
-        if (charFromXY(x-1,y, lines).isDigit()) {
-            returnObj += findNumber(x-1,y, lines)
+    private fun checkAdjacent(x: Int, y: Int): List<Int> {
+        val returnObj: MutableList<Int> = mutableListOf()
+        if (charFromXY(x-1,y).isDigit()) {
+            returnObj += findNumber(x-1,y)
         }
-        if (charFromXY(x+1,y, lines).isDigit()) {
-            returnObj += findNumber(x+1,y, lines)
-        }
-
-        if (charFromXY(x,y+1, lines).isDigit()) {
-            returnObj += findNumber(x,y+1, lines)
-        } else {
-            if (charFromXY(x-1,y+1, lines).isDigit()) {
-                returnObj += findNumber(x-1,y+1, lines)
-            }
-            if (charFromXY(x+1,y+1, lines).isDigit()) {
-                returnObj += findNumber(x+1,y+1, lines)
-            }
+        if (charFromXY(x+1,y).isDigit()) {
+            returnObj += findNumber(x+1,y)
         }
 
-        if (charFromXY(x,y-1, lines).isDigit()) {
-            returnObj += findNumber(x,y-1, lines)
+        if (charFromXY(x,y+1).isDigit()) {
+            returnObj += findNumber(x,y+1)
         } else {
-            if (charFromXY(x-1,y-1, lines).isDigit()) {
-                returnObj += findNumber(x-1,y-1, lines)
+            if (charFromXY(x-1,y+1).isDigit()) {
+                returnObj += findNumber(x-1,y+1)
             }
-            if (charFromXY(x+1,y-1, lines).isDigit()) {
-                returnObj += findNumber(x+1,y-1, lines)
+            if (charFromXY(x+1,y+1).isDigit()) {
+                returnObj += findNumber(x+1,y+1)
+            }
+        }
+
+        if (charFromXY(x,y-1).isDigit()) {
+            returnObj += findNumber(x,y-1)
+        } else {
+            if (charFromXY(x-1,y-1).isDigit()) {
+                returnObj += findNumber(x-1,y-1)
+            }
+            if (charFromXY(x+1,y-1).isDigit()) {
+                returnObj += findNumber(x+1,y-1)
             }
         }
 
         return returnObj
     }
 
-    fun findNumber(x: Int, y: Int, lines: List<String>): Int {
-        if (charFromXY(x-1, y, lines).isDigit()) {
-            return if (charFromXY(x-2, y, lines).isDigit()) {
-                (charFromXY(x-2, y, lines).toString()+charFromXY(x-1, y, lines).toString()+charFromXY(x, y, lines).toString()).toInt()
-            } else if (charFromXY(x+1, y, lines).isDigit()) {
-                (charFromXY(x-1, y, lines).toString()+charFromXY(x, y, lines).toString()+charFromXY(x+1, y, lines).toString()).toInt()
+    private fun findNumber(x: Int, y: Int): Int {
+        if (charFromXY(x-1, y).isDigit()) {
+            return if (charFromXY(x-2, y).isDigit()) {
+                (charFromXY(x-2, y).toString()+charFromXY(x-1, y).toString()+charFromXY(x, y).toString()).toInt()
+            } else if (charFromXY(x+1, y).isDigit()) {
+                (charFromXY(x-1, y).toString()+charFromXY(x, y).toString()+charFromXY(x+1, y).toString()).toInt()
             } else {
-                (charFromXY(x-1, y, lines).toString()+charFromXY(x, y, lines).toString()).toInt()
+                (charFromXY(x-1, y).toString()+charFromXY(x, y).toString()).toInt()
             }
         }
 
-        else if (charFromXY(x+1, y, lines).isDigit()) {
-            return if (charFromXY(x+2, y, lines).isDigit()) {
-                (charFromXY(x, y, lines).toString()+charFromXY(x+1, y, lines).toString()+charFromXY(x+2, y, lines).toString()).toInt()
+        else if (charFromXY(x+1, y).isDigit()) {
+            return if (charFromXY(x+2, y).isDigit()) {
+                (charFromXY(x, y).toString()+charFromXY(x+1, y).toString()+charFromXY(x+2, y).toString()).toInt()
             } else {
-                (charFromXY(x, y, lines).toString()+charFromXY(x+1, y, lines).toString()).toInt()
+                (charFromXY(x, y).toString()+charFromXY(x+1, y).toString()).toInt()
             }
         }
 
         else {
-            return charFromXY(x, y, lines).toString().toInt()
+            return charFromXY(x, y).toString().toInt()
         }
     }
 }
