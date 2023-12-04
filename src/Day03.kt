@@ -41,7 +41,7 @@ class Day03(private val lines: List<String>) {
                 if (c.isGear()) {
                     val numbers = checkAdjacent(i, l)
                     if (numbers.count() >= 2) {
-                        var finalRatio = 1;
+                        var finalRatio = 1
                         numbers.forEach { finalRatio *= it }
                         sum += finalRatio
                     }
@@ -51,17 +51,9 @@ class Day03(private val lines: List<String>) {
         sum.println("Part 2 Total: {val}")
     }
 
-    private fun Char.isSymbol(): Boolean {
-        return !this.isDigit() && this != '.'
-    }
-
-    private fun Char.isGear(): Boolean {
-        return this == '*'
-    }
-
-    private fun charFromXY(x: Int, y: Int): Char {
-        return lines[y][x]
-    }
+    private fun Char.isSymbol(): Boolean = !this.isDigit() && this != '.'
+    private fun Char.isGear(): Boolean = this == '*'
+    private fun charFromXY(x: Int, y: Int): Char = lines[y][x]
 
     private fun checkAdjacent(x: Int, y: Int): List<Int> {
         val returnObj: MutableList<Int> = mutableListOf()

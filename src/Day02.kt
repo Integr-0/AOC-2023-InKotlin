@@ -33,7 +33,6 @@ class Day02(private val lines: List<String>) {
                     when (cube.color) {
                         Color.RED -> {
                             if (cube.amount > startingRedCubes) valid = false
-
                         }
 
                         Color.GREEN -> {
@@ -113,8 +112,8 @@ class Day02(private val lines: List<String>) {
         val cubes: MutableList<Cube> = mutableListOf()
 
         for (s in cubeStrings) {
-            var count = s.substringBefore(" ").toInt()
-            var color = colorToColor(s.dropWhile { c: Char ->  c.isDigit()}.removePrefix(" "))
+            val count = s.substringBefore(" ").toInt()
+            val color = colorToColor(s.dropWhile { c: Char ->  c.isDigit()}.removePrefix(" "))
             cubes += Cube(color, count)
         }
         return cubes
