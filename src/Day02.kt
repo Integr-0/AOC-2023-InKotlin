@@ -69,7 +69,6 @@ class Day02(private val lines: List<String>) {
             val hands = getHands(l)
             for (hand in hands) {
                 for (cube in hand) {
-
                     when (cube.color) {
                         Color.RED -> {
                             if (cube.amount > maxRed) maxRed = cube.amount
