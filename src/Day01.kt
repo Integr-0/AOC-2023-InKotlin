@@ -32,7 +32,26 @@ class Day01(private val lines: List<String>) {
 
     fun solvePart2() {
         var total = 0
-        val numbers = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        val numbers = listOf(
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+        )
 
         for (l in lines) {
             val first = l.findAnyOf(numbers)
