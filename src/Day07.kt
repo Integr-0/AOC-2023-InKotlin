@@ -107,8 +107,8 @@ class Day07(private val lines: List<String>) {
             }
         }
 
-        var jokerAmount = charMap['J']
-        var type: DeckType
+        val jokerAmount = charMap['J']
+        val type: DeckType
 
         if (jokerAmount != 0 && jokerAmount != null) {
             type = when (jokerAmount) {
@@ -207,7 +207,7 @@ class Day07(private val lines: List<String>) {
             }
         }
 
-        var type: DeckType = if (amountOf5s == 1) {
+        val type: DeckType = if (amountOf5s == 1) {
             DeckType.FiveOfAKind
         } else if (amountOf4s == 1) {
             DeckType.FourOfAKind
@@ -275,14 +275,14 @@ class Day07(private val lines: List<String>) {
         }
     }
 
-    enum class DeckType(value: Int) {
-        FiveOfAKind(7),
-        FourOfAKind(6),
-        FullHouse(5),
-        ThreeOfAKind(4),
-        TwoPair(3),
-        OnePair(2),
-        HighCard(1)
+    enum class DeckType {
+        FiveOfAKind,
+        FourOfAKind,
+        FullHouse,
+        ThreeOfAKind,
+        TwoPair,
+        OnePair,
+        HighCard
     }
 
     data class DeckData(

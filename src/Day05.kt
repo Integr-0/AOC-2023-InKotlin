@@ -13,7 +13,7 @@ fun main() {
     val day05 = Day05(lines)
 
     day05.solvePart1()
-    //day05.solvePart2()
+    //TODO: day05.solvePart2() Too Slow Algorithm
 }
 
 class Day05(private val lines: List<String>) {
@@ -59,7 +59,7 @@ class Day05(private val lines: List<String>) {
         }
         print("]")
         println("")
-        es.await(120)
+        es.awaitOff(120)
         allDests.min().println("Part 1 Total: {val}")
     }
 

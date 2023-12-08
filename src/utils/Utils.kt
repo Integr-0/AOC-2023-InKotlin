@@ -120,7 +120,7 @@ class MultiThreadingService(threads: Int) {
      * Waits for all threads to **finish** before **shutting down**
      * @param maxWait the maximum time to wait
      */
-    fun await(maxWait: Int) {
+    fun awaitOff(maxWait: Int) {
         service.shutdown()
         service.awaitTermination(maxWait.toLong(), TimeUnit.SECONDS)
     }
